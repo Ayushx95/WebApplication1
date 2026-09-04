@@ -1,0 +1,43 @@
+@model WebApplication1.Models.Attendance
+
+@{
+    ViewData["Title"] = "Edit Attendance";
+}
+
+<h1>Edit Attendance</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label">Student</label>
+        <select asp-for="StudentId" class="form-control" asp-items="(IEnumerable<SelectListItem>)ViewBag.Students"></select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input asp-for="Date" type="date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-check">
+        <input asp-for="Present" class="form-check-input" />
+        <label asp-for="Present" class="form-check-label">Present</label>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Notes" class="control-label"></label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-2">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

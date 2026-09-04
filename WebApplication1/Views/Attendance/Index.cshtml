@@ -1,0 +1,65 @@
+@model IEnumerable<WebApplication1.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<h1>Attendance</h1>
+
+<form method="get" asp-action="Index" class="mb-3 form-inline">
+    <div class="row">
+        <div class="col-auto">
+            <select name="studentId" class="form-select">
+                <option value="">-- All Students --</option>
+                @foreach (var s in (IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)ViewBag.Students ?? Enumerable.Empty<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>())
+                {
+                    if (ViewBag.SelectedStudentId?.ToString() == s.Value)
+                    {
+                        <option value="@s.Value" selected>@s.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@s.Value">@s.Text</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-secondary">Filter</button>
+            <a asp-action="Index" class="btn btn-link">Clear</a>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-primary">Record Attendance</a>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Present</th>
+            <th>Notes</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Student?.Name</td>
+            <td>@item.Date.ToString("yyyy-MM-dd")</td>
+            <td>@(item.Present ? "Yes" : "No")</td>
+            <td>@item.Notes</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

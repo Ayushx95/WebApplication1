@@ -1,0 +1,33 @@
+@model WebApplication1.Models.Attendance
+
+@{
+    ViewData["Title"] = "Attendance Details";
+}
+
+<h1>Attendance Details</h1>
+
+<div>
+    <h4>Attendance</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Id</dt>
+        <dd class = "col-sm-10">@Model.Id</dd>
+
+        <dt class = "col-sm-2">Student</dt>
+        <dd class = "col-sm-10">@Model.Student?.Name</dd>
+
+        <dt class = "col-sm-2">Date</dt>
+        <dd class = "col-sm-10">@Model.Date.ToString("yyyy-MM-dd")</dd>
+
+        <dt class = "col-sm-2">Present</dt>
+        <dd class = "col-sm-10">@(Model.Present ? "Yes" : "No")</dd>
+
+        <dt class = "col-sm-2">Notes</dt>
+        <dd class = "col-sm-10">@Model.Notes</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
