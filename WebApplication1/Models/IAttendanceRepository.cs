@@ -18,3 +18,4 @@ namespace WebApplication1.Models
         Task<List<Attendance>> GetAttendancesForStudentAsync(int studentId);
     }
 }
+    

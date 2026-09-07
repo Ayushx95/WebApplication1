@@ -17,6 +17,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
+            <th>Class</th>
             <th>Enrollment Date</th>
             <th></th>
         </tr>
@@ -29,6 +30,7 @@
             <td>@item.Name</td>
             <td>@item.Email</td>
             <td>@item.Age</td>
+<td>@item.Class</td>
             <td>@item.EnrollmentDate.ToString("yyyy-MM-dd")</td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

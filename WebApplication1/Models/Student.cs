@@ -9,8 +9,9 @@ namespace WebApplication1.Models
 
         public int? Age { get; set; }
 
+        public string? Class { get; set; }
+
         public DateTime EnrollmentDate { get; set; } = DateTime.UtcNow;
 
-        // Add other student properties as needed
     }
 }
