@@ -18,7 +18,7 @@ namespace WebApplication1.Models
         public int? Age { get; set; }
         [Required(ErrorMessage = "Stuent Class is required.")]
         [Range(1,12,ErrorMessage ="Class must be between 1 and 12.")]
-        public string? Class { get; set; }
+        public int? Class { get; set; }
 
         public DateTime EnrollmentDate { get; set; } = DateTime.UtcNow;
 
